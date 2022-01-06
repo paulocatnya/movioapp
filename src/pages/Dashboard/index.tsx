@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
             currency: "BRL",
           })}
           classCard="cardInput"
-          lg={6}
+          lg={2}
           md={6}
           sm={6}
           xs={12}
