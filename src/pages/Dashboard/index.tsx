@@ -56,6 +56,7 @@ const Dashboard: React.FC = () => {
           xs={12}
         />
       </Grid>
+
       <ModalDefault />
       <Grid container>
         <TableDefault dataTable={moviments} />
