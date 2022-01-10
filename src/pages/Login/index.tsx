@@ -9,8 +9,12 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string | undefined>(undefined);
 
   const sign = async () => {
-    await login({ email, password });
-    navigate("/dashboard");
+    try {
+      await login({ email, password });
+      navigate("/dashboard");
+    } catch (err: any) {
+      alert(err.message);
+    }
   };
 
   return (
