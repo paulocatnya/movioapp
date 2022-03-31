@@ -11,6 +11,8 @@ import { Box, TextareaAutosize } from "@material-ui/core";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import { createMoviment } from "../../api/moviments";
+import { TypeMovimentEnum } from "../../models/moviments";
 
 const useStyles = makeStyles(() => ({
   button: {
@@ -43,6 +45,21 @@ export default function ModalDefault() {
     setOpen(false);
   };
 
+  const newMoviment = async (
+    type: TypeMovimentEnum,
+    value: string,
+    description: string
+  ) => {
+    try {
+      console.log("Vai chamar: createMoviment");
+      const retornoCreate = await createMoviment(type, value, description);
+      alert(retornoCreate);
+      handleClose();
+    } catch (e) {
+      console.log("Não foi possivel inserir, error: ", e);
+    }
+  };
+
   return (
     <div>
       <Box className={classes.button}>
@@ -59,7 +76,7 @@ export default function ModalDefault() {
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Fluxo de caixa</DialogTitle>
-        <form onSubmit={(data) => alert(JSON.stringify(data))}>
+        <form>
           <DialogContent>
             <InputLabel id="demo-simple-select-standard-label">
               Tipo de operação
@@ -102,10 +119,11 @@ export default function ModalDefault() {
               Cancelar
             </Button>
             <Button
-              onClick={handleClose}
               color="success"
               variant="outlined"
-              type="submit"
+              onClick={() =>
+                newMoviment(TypeMovimentEnum.DEPOSIT, "100", "TESTE")
+              }
             >
               Confirmar
             </Button>
