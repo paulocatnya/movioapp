@@ -89,8 +89,8 @@ export default function ModalDefault() {
               label="Tipo de lançamento"
               fullWidth
             >
-              <MenuItem value={"DEPOSIT"}>ENTRADA</MenuItem>
-              <MenuItem value={"WITHDRAW"}>SAIDA</MenuItem>
+              <MenuItem value={"DEPOSIT"}>DEPOSIT</MenuItem>
+              <MenuItem value={"WITHDRAW"}>WITHDRAW</MenuItem>
             </Select>
 
             <TextField
@@ -122,7 +122,8 @@ export default function ModalDefault() {
               color="success"
               variant="outlined"
               onClick={() =>
-                newMoviment(TypeMovimentEnum.DEPOSIT, "100", "TESTE")
+                newMoviment(TypeMovimentEnum.Depósito, "100", "TESTE")
+                // console.log(age)
               }
             >
               Confirmar

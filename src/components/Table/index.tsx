@@ -42,7 +42,7 @@ const TableDefault: React.FC<TableDefaultProps> = ({ dataTable }) => {
             <TableRow key={row.id}>
               <TableCell align="center">{pos + 1}</TableCell>
               <TableCell align="center">{row.user.name}</TableCell>
-              <TableCell align="center">{TypeMovimentEnum[row.type]}</TableCell>
+              <TableCell align="center">{row.type}</TableCell>
               <TableCell align="center">
                 {new Date(row.updatedAt).toLocaleDateString("pt-BR")}
               </TableCell>

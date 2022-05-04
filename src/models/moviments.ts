@@ -18,6 +18,6 @@ export interface IMoviment {
 }
 
 export enum TypeMovimentEnum {
-  WITHDRAW = "Saque",
-  DEPOSIT = "Depósito",
+  Saque = "WITHDRAW",
+  Depósito = "DEPOSIT",
 }
