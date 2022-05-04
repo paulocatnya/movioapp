@@ -2,6 +2,7 @@
     "name": "movio-app",
     "version": "0.1.0",
     "private": true,
+    "proxy": "https://movioapi.herokuapp.com/auth/login",
     "dependencies": {
         "@emotion/react": "^11.7.1",
         "@emotion/styled": "^11.6.0",
