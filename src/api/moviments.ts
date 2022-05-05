@@ -7,16 +7,10 @@ export async function findAllMoviments() {
 }
 
 export async function createMoviment(
-  type: TypeMovimentEnum,
-  value: string,
-  description: string
+  type: string | undefined,
+  value: string | undefined,
+  description: string | undefined,
 ) {
-  console.log(
-    "chegou createMoviment com type, value, description:::",
-    type,
-    value,
-    description
-  );
   const moviments = await api.post("/moviments", { type, value, description });
   return moviments.data;
 }

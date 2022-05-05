@@ -30,9 +30,19 @@ const useStyles = makeStyles(() => ({
 export default function ModalDefault() {
   const classes = useStyles();
 
-  const [age, setAge] = useState("DEPOSIT");
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
+  const [typeOperation, setTypeOperation] = useState<string | undefined>();
+  const handleChangeTypeOperation = (event: SelectChangeEvent) => {
+    setTypeOperation(event.target.value);
+  };
+  
+  const [description, setDescription] = useState<string | undefined>();
+  const handleChangeDescription = (event: SelectChangeEvent) => {
+    setDescription(event.target.value);
+  };
+
+  const [valueOperation, setValueOperation] = useState<string | undefined>();
+  const handleChangeValue = (event: SelectChangeEvent) => {
+    setValueOperation(event.target.value);
   };
 
   const [open, setOpen] = useState(false);
@@ -45,14 +55,10 @@ export default function ModalDefault() {
     setOpen(false);
   };
 
-  const newMoviment = async (
-    type: TypeMovimentEnum,
-    value: string,
-    description: string
-  ) => {
+  const newMoviment = async () => { 
     try {
-      console.log("Vai chamar: createMoviment");
-      const retornoCreate = await createMoviment(type, value, description);
+      console.log("Vai chamar: createMoviment", typeOperation, valueOperation, description);
+      const retornoCreate = await createMoviment(typeOperation, valueOperation, description);
       alert(retornoCreate);
       handleClose();
     } catch (e) {
@@ -84,8 +90,8 @@ export default function ModalDefault() {
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              value={age}
-              onChange={handleChange}
+              value={typeOperation}
+              onChange={handleChangeTypeOperation}
               label="Tipo de lançamento"
               fullWidth
             >
@@ -97,6 +103,7 @@ export default function ModalDefault() {
               margin="dense"
               id="valor"
               label="Valor"
+              onChange={(event) => setValueOperation(event.target.value)}
               fullWidth
               variant="standard"
               type="number"
@@ -105,6 +112,7 @@ export default function ModalDefault() {
             <TextareaAutosize
               id="descricao"
               aria-label="Descrição"
+              onChange={(event) => setDescription(event.target.value)}
               style={{
                 width: "100%",
                 height: 80,
@@ -122,8 +130,7 @@ export default function ModalDefault() {
               color="success"
               variant="outlined"
               onClick={() =>
-                newMoviment(TypeMovimentEnum.Depósito, "100", "TESTE")
-                // console.log(age)
+                newMoviment()
               }
             >
               Confirmar

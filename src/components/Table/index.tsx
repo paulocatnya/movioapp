@@ -33,6 +33,7 @@ const TableDefault: React.FC<TableDefaultProps> = ({ dataTable }) => {
             <TableCell align="center">Item</TableCell>
             <TableCell align="center">Responsável</TableCell>
             <TableCell align="center">Movimentação</TableCell>
+            <TableCell align="center">Descrição</TableCell>
             <TableCell align="center">Data</TableCell>
             <TableCell align="center">Valor</TableCell>
           </TableRow>
@@ -43,6 +44,7 @@ const TableDefault: React.FC<TableDefaultProps> = ({ dataTable }) => {
               <TableCell align="center">{pos + 1}</TableCell>
               <TableCell align="center">{row.user.name}</TableCell>
               <TableCell align="center">{row.type}</TableCell>
+              <TableCell align="center">{row.description}</TableCell>
               <TableCell align="center">
                 {new Date(row.updatedAt).toLocaleDateString("pt-BR")}
               </TableCell>
